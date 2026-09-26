@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: trail-riders
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --worker-class eventlet -w 1 app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
